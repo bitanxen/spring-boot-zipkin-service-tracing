@@ -3,7 +3,6 @@ WORKDIR application
 ARG JAR_FILE=target/spring-boot-zipkin-service-tracing.jar
 COPY ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
-
 FROM openjdk:8-jdk-alpine AS runtine
 WORKDIR application
 COPY --from=builder application/dependencies/ ./
